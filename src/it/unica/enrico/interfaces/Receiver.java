@@ -5,11 +5,11 @@ import java.util.Queue;
 
 public interface Receiver {
 
-    public Queue<Data> getQueue();
+    Queue<Data> getQueue();
 
-    public boolean isReady();
+    boolean isReady();
 
-    public String getHost();
+    String getHost();
 
-    public int getPort();
+    int getPort();
 }

@@ -1,8 +1,8 @@
-package it.unica.enrico.utilis;
+package it.unica.enrico.utils;
 
 public abstract class Constants {
 
-        public static enum  Status {
+        public enum  Status {
             OWN_TRANSACTION,
             NO_PUBLIC_KEY,
             INCORRECT_NONCE,

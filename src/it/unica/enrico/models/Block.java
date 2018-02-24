@@ -1,9 +1,8 @@
 package it.unica.enrico.models;
 
-import it.unica.enrico.utilis.HashUtils;
+import it.unica.enrico.utils.HashUtils;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /* questa classe rappresenta il blocco generico della blockchain */
@@ -170,19 +169,19 @@ public class Block {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Blocco valido = ").append(bloccoConf).append("\n");
-        builder.append("Numero di Zeri = ").append(numeroDiZeri).append("\n");
-        builder.append("nonce utilizzato = ").append(nonce).append("\n");
-        builder.append("Dimensione blocco = ").append(dimensione).append("\n");
-        builder.append("Hash precedente = ").append(HashUtils.bytesToHex(hashBloccoPrecedente));
-        builder.append("hash = ").append(HashUtils.bytesToHex(hash));
-        builder.append("block={").append("\n");
+        builder.append("Blocco valido: ").append(bloccoConf).append("\n");
+        builder.append("Numero di Zeri: ").append(numeroDiZeri).append("\n");
+        builder.append("Nonce utilizzato: ").append(nonce).append("\n");
+        builder.append("Dimensione blocco: ").append(dimensione).append("\n");
+        builder.append("Hash precedente: ").append(HashUtils.bytesToHex(hashBloccoPrecedente));
+        builder.append("Hash: ").append(HashUtils.bytesToHex(hash));
+        builder.append("Block-> [ ").append("\n");
         for (Transaction t : transazioni) {
-            builder.append("transaction={").append("\n");
+            builder.append("Transazione: [").append("\n");
             builder.append(t.toString()).append("\n");
-            builder.append("}").append("\n");
+            builder.append("]").append("\n");
         }
-        builder.append("}");
+        builder.append("]\n");
         return builder.toString();
     }
 }

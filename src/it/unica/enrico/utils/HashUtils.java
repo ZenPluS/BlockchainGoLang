@@ -1,11 +1,11 @@
-package it.unica.enrico.utilis;
+package it.unica.enrico.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 
 public abstract class HashUtils {
 
-    public static final byte[] calculateSha256 (String text) {
+    public static byte[] calculateSha256 (String text) {
         byte[] hash2;
         try {
             hash2 = calculateSha256(text.getBytes("UTF-8"));
@@ -15,7 +15,7 @@ public abstract class HashUtils {
         return hash2;
     }
 
-    public static final byte[] calculateSha256 (byte[] utf8Bytes) {
+    private static byte[] calculateSha256 (byte[] utf8Bytes) {
         byte[] hash2;
         try {
             final MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -27,7 +27,7 @@ public abstract class HashUtils {
         return hash2;
     }
 
-    public static final String bytesToHex (byte[] bytes) {
+    public static String bytesToHex (byte[] bytes) {
         final StringBuilder result = new StringBuilder();
         for (byte byt : bytes)
             result.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));

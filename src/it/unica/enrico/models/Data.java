@@ -17,31 +17,96 @@ public class Data {
     private int portaSorgente;
     private InetAddress indirizzoDestinzazione;
     private int portaDestinzazione;
+
+    public String getMittente () {
+        return mittente;
+    }
+
+    public void setMittente (String mittente) {
+        this.mittente = mittente;
+    }
+
+    public String getDestinatario () {
+        return destinatario;
+    }
+
+    public void setDestinatario (String destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public InetAddress getIndirizzoSorgente () {
+        return indirizzoSorgente;
+    }
+
+    public void setIndirizzoSorgente (InetAddress indirizzoSorgente) {
+        this.indirizzoSorgente = indirizzoSorgente;
+    }
+
+    public int getPortaSorgente () {
+        return portaSorgente;
+    }
+
+    public void setPortaSorgente (int portaSorgente) {
+        this.portaSorgente = portaSorgente;
+    }
+
+    public InetAddress getIndirizzoDestinzazione () {
+        return indirizzoDestinzazione;
+    }
+
+    public void setIndirizzoDestinzazione (InetAddress indirizzoDestinzazione) {
+        this.indirizzoDestinzazione = indirizzoDestinzazione;
+    }
+
+    public int getPortaDestinzazione () {
+        return portaDestinzazione;
+    }
+
+    public void setPortaDestinzazione (int portaDestinzazione) {
+        this.portaDestinzazione = portaDestinzazione;
+    }
+
+    public ByteBuffer getFirma () {
+        return firma;
+    }
+
+    public void setFirma (ByteBuffer firma) {
+        this.firma = firma;
+    }
+
+    public ByteBuffer getMessaggio () {
+        return messaggio;
+    }
+
+    public void setMessaggio (ByteBuffer messaggio) {
+        this.messaggio = messaggio;
+    }
+
     private ByteBuffer firma;
     private ByteBuffer messaggio;
 
     public Data() { }
 
-    public Data(String from, String sourceAddr, int sourcePort,
-                String to, String destAddr, int destPort,
-                byte[] signature, byte[] bytes) {
-        this.mittente = from;
-        this.destinatario = to;
+    private Data(String mittente, String indirizzoSorgente, int portaSorgente,
+                String destinatario, String indirizzoDestinzazione,
+                int portaDestinzazione, byte[] firma, byte[] messaggio) {
+        this.mittente = mittente;
+        this.destinatario = destinatario;
         try {
-            this.indirizzoSorgente = InetAddress.getByName(sourceAddr);
-            this.indirizzoDestinzazione = InetAddress.getByName(destAddr);
+            this.indirizzoSorgente = InetAddress.getByName(indirizzoSorgente);
+            this.indirizzoDestinzazione = InetAddress.getByName(indirizzoDestinzazione);
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
-        this.portaSorgente = sourcePort;
-        this.portaDestinzazione = destPort;
+        this.portaSorgente = portaSorgente;
+        this.portaDestinzazione = portaDestinzazione;
 
-        this.firma = ByteBuffer.allocate(signature.length);
-        this.firma.put(signature);
+        this.firma = ByteBuffer.allocate(firma.length);
+        this.firma.put(firma);
         this.firma.flip();
 
-        this.messaggio = ByteBuffer.allocate(bytes.length);
-        this.messaggio.put(bytes);
+        this.messaggio = ByteBuffer.allocate(messaggio.length);
+        this.messaggio.put(messaggio);
         this.messaggio.flip();
     }
 

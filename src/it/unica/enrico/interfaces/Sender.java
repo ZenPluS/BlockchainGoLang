@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public interface Sender {
 
-    public Queue<Data> getQueue();
+    Queue<Data> getQueue();
 
-    public boolean isReady();
+    boolean isReady();
 }

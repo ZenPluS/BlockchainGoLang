@@ -1,8 +1,7 @@
 package it.unica.enrico.models;
 
-import it.unica.enrico.utilis.HashUtils;
-import it.unica.enrico.utilis.KeyUtils;
-
+import it.unica.enrico.utils.HashUtils;
+import it.unica.enrico.utils.KeyUtils;
 import java.nio.ByteBuffer;
 import java.security.Signature;
 import java.util.Arrays;
@@ -24,8 +23,9 @@ public class Transaction {
     String header;                      //riassunto della transazione;
     int valore;                         //valore della transazizone
     ByteBuffer firma;                   //firma della transazione
-    Transaction[] inputs;               //
-    Transaction[]  outputs;             //
+
+    Transaction[] inputs;               //ToDo
+    Transaction[]  outputs;             //ToDo
 
     public Transaction() { }
 
@@ -54,10 +54,10 @@ public class Transaction {
 
 
     /* Crea la transazione aggregata e la firma*/
-    public static final Transaction newSignedTransaction(Signature firma,
-                                                         String mittente, String destinatario,
-                                                         String header, int valore,
-                                                         Transaction[] inputs, Transaction[] outputs)
+    public static Transaction newSignedTransaction(Signature firma,
+                                                   String mittente, String destinatario,
+                                                   String header, int valore,
+                                                   Transaction[] inputs, Transaction[] outputs)
     {
         final byte[] sig = KeyUtils.signMsg(firma, header.getBytes());
         return new Transaction(mittente, destinatario, header, valore, sig, inputs, outputs);
@@ -76,14 +76,14 @@ public class Transaction {
         for (Transaction t : outputs)
             oLength += LENGTH_LENGTH + t.getBufferLength();
 
-        int length =    LENGTH_LENGTH + firma.limit() +
-                LENGTH_LENGTH + iLength +
-                LENGTH_LENGTH + oLength +
-                TIMESTAMP_LENGTH +
-                VALUE_LENGTH +
-                HEADER_LENGTH + header.getBytes().length +
-                FROM_LENGTH + mittente.getBytes().length +
-                TO_LENGTH + destinatario.getBytes().length;
+        int length = LENGTH_LENGTH + firma.limit() +
+                     LENGTH_LENGTH + iLength +
+                     LENGTH_LENGTH + oLength +
+                     TIMESTAMP_LENGTH +
+                     VALUE_LENGTH +
+                     HEADER_LENGTH + header.getBytes().length +
+                     FROM_LENGTH + mittente.getBytes().length +
+                     TO_LENGTH + destinatario.getBytes().length;
         return length;
     }
 
@@ -253,13 +253,13 @@ public class Transaction {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Firma: ").append(HashUtils.bytesToHex(this.firma.array())).append("\n");
-        builder.append("inputs: ").append(inputs.length).append("\n");
-        builder.append("outputs: ").append(outputs.length).append("\n");
-        builder.append("timestamp: ").append(timestamp).append("\n");
-        builder.append("valore: ").append(valore).append("\n");
-        builder.append("mittente: ").append(mittente).append("\n");
-        builder.append("destinatario: ").append(destinatario).append("\n");
-        builder.append("header: ").append(header).append("\n");
+        builder.append("Inputs: ").append(inputs.length).append("\n");
+        builder.append("Outputs: ").append(outputs.length).append("\n");
+        builder.append("Timestamp: ").append(timestamp).append("\n");
+        builder.append("Valore: ").append(valore).append("\n");
+        builder.append("Mittente: ").append(mittente).append("\n");
+        builder.append("Destinatario: ").append(destinatario).append("\n");
+        builder.append("Header: ").append(header).append("\n");
         return builder.toString();
     }
 }
