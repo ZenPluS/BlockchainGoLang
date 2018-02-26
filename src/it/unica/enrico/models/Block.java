@@ -23,8 +23,90 @@ public class Block {
     private int dimensione;             //indica la dimensione del blocco
     int indice;                         //posizione del blocco nella blockchain
     private Transaction[] transazioni;  //Array delle transazioni contenute nel blocco
-    private byte[] hashBloccoPrecedente;//hash del blocco precedente
-    private byte[] hash;                //hash del blocco attuale
+    public byte[] hashBloccoPrecedente;
+    public byte[] hash;
+
+    public Block() { }
+
+    public Block(String provenienza, byte[] hashBloccoPrecedente, byte[] hash, Transaction[] transazioni, int dimensione) {
+        this.provenienza = provenienza;
+        this.hashBloccoPrecedente = hashBloccoPrecedente;
+        this.hash = hash;
+        this.transazioni = transazioni;
+        this.dimensione = dimensione;
+    }
+
+    public String getProvenienza () {
+        return provenienza;
+    }
+
+    public void setProvenienza (String provenienza) {
+        this.provenienza = provenienza;
+    }
+
+    public Boolean getBloccoConf () {
+        return bloccoConf;
+    }
+
+    public void setBloccoConf (Boolean bloccoConf) {
+        this.bloccoConf = bloccoConf;
+    }
+
+    public int getNumeroDiZeri () {
+        return numeroDiZeri;
+    }
+
+    public void setNumeroDiZeri (int numeroDiZeri) {
+        this.numeroDiZeri = numeroDiZeri;
+    }
+
+    public int getNonce () {
+        return nonce;
+    }
+
+    public void setNonce (int nonce) {
+        this.nonce = nonce;
+    }
+
+    public int getDimensione () {
+        return dimensione;
+    }
+
+    public void setDimensione (int dimensione) {
+        this.dimensione = dimensione;
+    }
+
+    public int getIndice () {
+        return indice;
+    }
+
+    public void setIndice (int indice) {
+        this.indice = indice;
+    }
+
+    public Transaction[] getTransazioni () {
+        return transazioni;
+    }
+
+    public void setTransazioni (Transaction[] transazioni) {
+        this.transazioni = transazioni;
+    }
+
+    public byte[] getHashBloccoPrecedente () {
+        return hashBloccoPrecedente;
+    }
+
+    public void setHashBloccoPrecedente (byte[] hashBloccoPrecedente) {
+        this.hashBloccoPrecedente = hashBloccoPrecedente;
+    }
+
+    public byte[] getHash () {
+        return hash;
+    }
+
+    public void setHash (byte[] hash) {
+        this.hash = hash;
+    }
 
     public int getBufferLength() {
         int transactionsLength = 0;

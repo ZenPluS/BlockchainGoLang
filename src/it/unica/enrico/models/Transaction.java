@@ -17,15 +17,79 @@ public class Transaction {
     private static final int VALUE_LENGTH = 4;
     private static final int LENGTH_LENGTH = 4;
 
-    String mittente;                    //chi effettua la transazione
-    String destinatario;                //chi riceve la transazione
-    long timestamp;                     //timestamp della transazione espresso in unix(millisecondi)
+    private String mittente;                    //chi effettua la transazione
+    private String destinatario;                //chi riceve la transazione
+    private long timestamp;                     //timestamp della transazione espresso in unix(millisecondi)
     String header;                      //riassunto della transazione;
     int valore;                         //valore della transazizone
     ByteBuffer firma;                   //firma della transazione
 
+    public String getHeader () {
+        return header;
+    }
+
+    public void setHeader (String header) {
+        this.header = header;
+    }
+
+    public int getValore () {
+        return valore;
+    }
+
+    public void setValore (int valore) {
+        this.valore = valore;
+    }
+
+    public ByteBuffer getFirma () {
+        return firma;
+    }
+
+    public void setFirma (ByteBuffer firma) {
+        this.firma = firma;
+    }
+
+    public Transaction[] getInputs () {
+        return inputs;
+    }
+
+    public void setInputs (Transaction[] inputs) {
+        this.inputs = inputs;
+    }
+
+    public Transaction[] getOutputs () {
+        return outputs;
+    }
+
+    public void setOutputs (Transaction[] outputs) {
+        this.outputs = outputs;
+    }
+
     Transaction[] inputs;               //ToDo
     Transaction[]  outputs;             //ToDo
+
+    public String getMittente () {
+        return mittente;
+    }
+
+    public void setMittente (String mittente) {
+        this.mittente = mittente;
+    }
+
+    public String getDestinatario () {
+        return destinatario;
+    }
+
+    public void setDestinatario (String destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public long getTimestamp () {
+        return timestamp;
+    }
+
+    public void setTimestamp (long timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public Transaction() { }
 

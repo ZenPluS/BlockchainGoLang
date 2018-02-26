@@ -15,7 +15,7 @@ public abstract class HashUtils {
         return hash2;
     }
 
-    private static byte[] calculateSha256 (byte[] utf8Bytes) {
+    static byte[] calculateSha256 (byte[] utf8Bytes) {
         byte[] hash2;
         try {
             final MessageDigest digest = MessageDigest.getInstance("SHA-256");

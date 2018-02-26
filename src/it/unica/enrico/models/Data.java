@@ -87,9 +87,9 @@ public class Data {
 
     public Data() { }
 
-    private Data(String mittente, String indirizzoSorgente, int portaSorgente,
-                String destinatario, String indirizzoDestinzazione,
-                int portaDestinzazione, byte[] firma, byte[] messaggio) {
+    public Data (String mittente, String indirizzoSorgente, int portaSorgente,
+                 String destinatario, String indirizzoDestinzazione,
+                 int portaDestinzazione, byte[] firma, byte[] messaggio) {
         this.mittente = mittente;
         this.destinatario = destinatario;
         try {
